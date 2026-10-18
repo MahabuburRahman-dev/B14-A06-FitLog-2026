@@ -1,10 +1,5 @@
-const page = () => {
-  return (
-    <div>
-      <h2>Page Not Found</h2>
-      <p>Could not find requested resource</p>
-    </div>
-  );
-};
+import MyPlanClient from "@/components/MyplanClient";
 
-export default page;
+export default function MyPlanPage() {
+  return <MyPlanClient />;
+}

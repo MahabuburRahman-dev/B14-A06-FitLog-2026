@@ -1,17 +1,39 @@
 "use client";
 
+import {
+  PLAN_KEY,
+  SAVED_KEY,
+  STORAGE_EVENT,
+  readWorkoutList,
+} from "@/lib/storage";
 import { Bookmark, CalendarDays, Dumbbell, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // These counters will connect to shared state in a later step.
-  const planCount = 0;
-  const savedCount = 0;
+  const [planCount, setPlanCount] = useState(0);
+  const [savedCount, setSavedCount] = useState(0);
+
+  useEffect(() => {
+    function refreshCounts() {
+      setPlanCount(readWorkoutList(PLAN_KEY).length);
+      setSavedCount(readWorkoutList(SAVED_KEY).length);
+    }
+
+    refreshCounts();
+
+    window.addEventListener(STORAGE_EVENT, refreshCounts);
+    window.addEventListener("storage", refreshCounts);
+
+    return () => {
+      window.removeEventListener(STORAGE_EVENT, refreshCounts);
+      window.removeEventListener("storage", refreshCounts);
+    };
+  }, []);
 
   const links = [
     { label: "Workouts", href: "/#library", active: pathname === "/" },
