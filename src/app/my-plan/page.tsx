@@ -56,7 +56,6 @@ export default function MyPlanPage() {
     <div className="plan-page">
       <div className="plan-heading">
         <div>
-          <p className="eyebrow">YOUR TRAINING SESSION</p>
           <h1>MY PLAN</h1>
           <p className="section-subtitle">
             Cap of five lifts for today. Finish them, then load more.
@@ -96,12 +95,6 @@ export default function MyPlanPage() {
           </button>
         </div>
         <div className="toolbar-right">
-          <input
-            className="plan-search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search list…"
-          />
           <label className="sort-label">
             Sort by{" "}
             <select value={sort} onChange={(e) => setSort(e.target.value)}>
@@ -124,7 +117,7 @@ export default function MyPlanPage() {
               : "Browse the library and add a lift to get today moving."}
           </p>
           <Link className="button button-primary" href="/">
-            Go to workouts <ArrowUpRight size={16} />
+            Go to workouts
           </Link>
         </div>
       ) : (

@@ -1,2 +1,38 @@
-import Link from 'next/link';import { Clock3, Flame, Star } from 'lucide-react';import type { Workout } from '@/lib/types';
-export default function WorkoutCard({workout:w}:{workout:Workout}){return <Link href={`/workout/${w.id}`} className="workout-card"><div className="card-image-wrap"><img className="card-image" src={w.image} alt={w.name} loading="lazy"/><span className="card-arrow">↗</span></div><div className="card-content"><div className="tags">{w.categories.map(c=><span className="tag" key={c}>{c}</span>)}</div><h3>{w.name}</h3><p className="equipment">{w.equipment}</p><div className="stats"><span><Clock3/>{w.duration} min</span><span><Flame/>{w.calories} kcal</span><span><Star/>{w.rating.toFixed(1)}</span></div></div></Link>}
+import type { Workout } from "@/lib/types";
+import { Clock3, Flame, Star } from "lucide-react";
+import Link from "next/link";
+export default function WorkoutCard({ workout: w }: { workout: Workout }) {
+  return (
+    <Link href={`/workout/${w.id}`} className="workout-card">
+      <div className="card-image-wrap">
+        <img className="card-image" src={w.image} alt={w.name} loading="lazy" />
+        <span className="card-arrow">↗</span>
+      </div>
+      <div className="card-content">
+        <div className="tags">
+          {w.categories.map((c) => (
+            <span className="tag" key={c}>
+              {c}
+            </span>
+          ))}
+        </div>
+        <h3>{w.name}</h3>
+        <p className="equipment">{w.equipment}</p>
+        <div className="stats">
+          <span>
+            <Clock3 />
+            {w.duration} min
+          </span>
+          <span>
+            <Flame />
+            {w.calories} kcal
+          </span>
+          <span>
+            <Star />
+            {w.rating.toFixed(1)}
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}

@@ -1,2 +1,18 @@
-import Link from 'next/link';import { ArrowLeft } from 'lucide-react';
-export default function NotFound(){return <div className="not-found"><p className="eyebrow">ERROR 404 / ROUTE NOT FOUND</p><h1>THIS REP<br/><span>DIDN&apos;T COUNT.</span></h1><p>The page you&apos;re looking for isn&apos;t in the workout library.</p><Link className="button button-primary" href="/"><ArrowLeft size={16}/> Back to workouts</Link></div>}
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+export default function NotFound() {
+  return (
+    <div className="not-found">
+      <p className="eyebrow">ERROR 404 / ROUTE NOT FOUND</p>
+      <h1>
+        THIS REP
+        <br />
+        <span>DIDN&apos;T COUNT.</span>
+      </h1>
+      <p>The page you&apos;re looking for isn&apos;t in the workout library.</p>
+      <Link className="button button-primary" href="/">
+        <ArrowLeft size={16} /> Back to workouts
+      </Link>
+    </div>
+  );
+}
