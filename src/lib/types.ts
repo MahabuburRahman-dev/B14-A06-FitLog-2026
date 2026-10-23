@@ -1,17 +1,5 @@
-export type Difficulty = "Beginner" | "Intermediate" | "Advanced";
-
-export interface Workout {
-  id: number;
-  name: string;
-  image: string;
-  muscleGroups: string[];
-  equipment: string;
-  difficulty: Difficulty;
-  duration: number;
-  caloriesBurned: number;
-  sets: number;
-  reps: string;
-  rating: number;
-  description: string;
-  instructions: string[];
-}
+export type Workout = {
+  id: string; name: string; description: string; categories: string[]; equipment: string;
+  difficulty: string; sets: number | string; reps: string; duration: number; calories: number;
+  rating: number; image: string; instructions: string[];
+};

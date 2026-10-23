@@ -1,8 +1,15 @@
-import HomeClient from "@/components/homeClient";
-import { fetchWorkouts } from "@/lib/workouts";
+import HomeClient from "@/components/HomeClient";
+import { fallbackWorkouts, getWorkouts } from "@/lib/workouts";
 
 export default async function HomePage() {
-  const workouts = await fetchWorkouts();
-
-  return <HomeClient workouts={workouts} />;
+  let workouts = fallbackWorkouts;
+  let apiError = false;
+  try {
+    const data = await getWorkouts();
+    if (data.length) workouts = data;
+    else apiError = true;
+  } catch {
+    apiError = true;
+  }
+  return <HomeClient workouts={workouts} apiError={apiError} />;
 }
